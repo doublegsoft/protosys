@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.doublegsoft.protosys</groupId>
+    <artifactId>protosys</artifactId>
+    <version>4.5</version>
+  </parent>
+
+  <artifactId>protosys-model</artifactId>
+  <packaging>jar</packaging>
+
+  <description>model framework</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-metabean</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-metamodel</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-metaui</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+    </dependency>
+  </dependencies>
+</project>

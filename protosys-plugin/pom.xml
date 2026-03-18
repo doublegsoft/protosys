@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.doublegsoft.protosys</groupId>
+    <artifactId>protosys</artifactId>
+    <version>4.5</version>
+  </parent>
+
+  <artifactId>protosys-plugin</artifactId>
+  <packaging>jar</packaging>
+
+  <description>plugin framework</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.doublegsoft.misuml</groupId>
+      <artifactId>misuml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.doublegsoft.apiml</groupId>
+      <artifactId>apiml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-metaui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.doublegsoft.guidbase</groupId>
+      <artifactId>guidbase</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.doublegsoft.guic</groupId>
+      <artifactId>guimlc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-metamodel</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.doublegsoft.protosys</groupId>
+      <artifactId>protosys-model</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>cqwinning.com-releases</id>
+      <url>http://120.79.137.143:8081/repository/maven-releases/</url>
+    </repository>
+    <repository>
+      <id>doublegsoft.com-releases</id>
+      <url>http://nexus.doublegsoft.com:8081/repository/maven-releases/</url>
+    </repository>
+    <repository>
+      <id>doublegsoft.com-snapshots</id>
+      <url>http://nexus.doublegsoft.com:8081/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
+</project>
