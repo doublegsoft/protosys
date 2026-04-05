@@ -23,16 +23,16 @@ import com.doublegsoft.apiml.sql.SQLAPIModelExpressionParser;
 import com.doublegsoft.guimlc.ProcessModel;
 import com.doublegsoft.jcommons.lang.HashObject;
 import com.doublegsoft.jcommons.metabean.ModelDefinition;
-import com.doublegsoft.jcommons.metamodel.APIDefinition;
-import com.doublegsoft.jcommons.metamodel.ApplicationAPIDefinition;
+import com.doublegsoft.jcommons.metamodel.ApiDefinition;
+import com.doublegsoft.jcommons.metamodel.ApplicationApiDefinition;
 import com.doublegsoft.jcommons.metamodel.ApplicationDefinition;
 import com.doublegsoft.jcommons.metamodel.UsecaseDefinition;
-import com.doublegsoft.jcommons.metamodel.func.FunctionAPIModelDefinition;
+import com.doublegsoft.jcommons.metamodel.func.FunctionApiModelDefinition;
 import com.doublegsoft.jcommons.metamodel.mvc.MVCAPIModelDefinition;
-import com.doublegsoft.jcommons.metamodel.rest.RESTAPIModelDefinition;
-import com.doublegsoft.jcommons.metamodel.rest.RESTAPIModelDefinition;
-import com.doublegsoft.jcommons.metamodel.sql.SQLAPIModelDefinition;
-import com.doublegsoft.jcommons.metamodel.sql.SQLAPIModelDefinition;
+import com.doublegsoft.jcommons.metamodel.rest.RestApiModelDefinition;
+import com.doublegsoft.jcommons.metamodel.rest.RestApiModelDefinition;
+import com.doublegsoft.jcommons.metamodel.sql.SqlApiModelDefinition;
+import com.doublegsoft.jcommons.metamodel.sql.SqlApiModelDefinition;
 import com.doublegsoft.jcommons.metaui.PageDefinition;
 import com.doublegsoft.jcommons.metaui.WidgetDefinition;
 import com.doublegsoft.jcommons.metaui.layout.Position;
@@ -97,12 +97,12 @@ public interface Plugin {
     int usecaseCount = misuml.size("usecases");
 
     // sql, data, view, rest
-    ApplicationAPIDefinition apiAppSql = new ApplicationAPIDefinition();
-    ApplicationAPIDefinition apiAppData = new ApplicationAPIDefinition();
-    ApplicationAPIDefinition apiAppView = new ApplicationAPIDefinition();
-    ApplicationAPIDefinition apiAppRest = new ApplicationAPIDefinition();
-    ApplicationAPIDefinition apiAppService = new ApplicationAPIDefinition();
-    ApplicationAPIDefinition apiAppDomain = new ApplicationAPIDefinition();
+    ApplicationApiDefinition apiAppSql = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppData = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppView = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppRest = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppService = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppDomain = new ApplicationApiDefinition();
 
     apiAppSql.setName(retVal.getName());
     apiAppSql.setOption("type", "sql");
@@ -118,7 +118,7 @@ public interface Plugin {
     apiAppDomain.setOption("type", "domain");
 
     for (int i = 0; i < apiCount; i++) {
-      APIDefinition api = new APIDefinition();
+      ApiDefinition api = new ApiDefinition();
       api.setName(misuml.get("api", i, "name"));
       api.setModule(misuml.get("api", i, "module"));
       api.setDescription(misuml.get("api", i, "description"));
@@ -130,53 +130,53 @@ public interface Plugin {
       String serviceModel = misuml.get("api", i, "serviceModel");
       String domainModel = misuml.get("api", i, "domainModel");
 
-      if (viewModel != null) {
-        // view api model
-        String expr = misuml.get("api", i, "viewModel");
-        MVCAPIModelDefinition mvcApiModel = MVC_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
-        api.setModel(mvcApiModel);
-        api.setName(mvcApiModel.getUri());
-        api.setType("view");
-        apiAppView.addAPI(api);
-      } else if (dataModel != null) {
-        String expr = misuml.get("api", i, "dataModel");
-        // data api model
-        MVCAPIModelDefinition mvcApiModel = MVC_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
-        api.setModel(mvcApiModel);
-        api.setName(mvcApiModel.getUri());
-        api.setType("data");
-        apiAppData.addAPI(api);
-      } else if (restModel != null) {
-        String expr = misuml.get("api", i, "restModel");
-        // rest api model
-        RESTAPIModelDefinition RESTAPIModel = REST_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
-        api.setModel(RESTAPIModel);
-        api.setType("rest");
-        api.setName(RESTAPIModel.getAction() + "#" + RESTAPIModel.getUri());
-        apiAppRest.addAPI(api);
-      } else if (sqlModel != null) {
-        String expr = misuml.get("api", i, "sqlModel");
-        SQLAPIModelDefinition SQLAPIModel = SQL_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
-        api.setModel(SQLAPIModel);
-        api.setName(SQLAPIModel.getId());
-        api.setType("sql");
-        apiAppSql.addAPI(api);
-      } else if (serviceModel != null) {
-        String expr = misuml.get("api", i, "serviceModel");
-        FunctionAPIModelDefinition serviceApiModel = FUNC_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
-        api.setModel(serviceApiModel);
-        api.setName(serviceApiModel.getId());
-        api.setType("service");
-        apiAppService.addAPI(api);
-      } else if (domainModel != null) {
-        String expr = misuml.get("api", i, "domainModel");
-        // TODO: TO IMPLEMENT DOMAIN MODEL PARSER
-//                SQLAPIModelDefinition SQLAPIModel = SQL_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
-//                api.setModel(SQLAPIModel);
-//                api.setName(SQLAPIModel.getId());
-        api.setType("domain");
-        apiAppSql.addAPI(api);
-      }
+//      if (viewModel != null) {
+//        // view api model
+//        String expr = misuml.get("api", i, "viewModel");
+//        MVCAPIModelDefinition mvcApiModel = MVC_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
+//        api.setModel(mvcApiModel);
+//        api.setName(mvcApiModel.getUri());
+//        api.setType("view");
+//        apiAppView.addAPI(api);
+//      } else if (dataModel != null) {
+//        String expr = misuml.get("api", i, "dataModel");
+//        // data api model
+//        MVCAPIModelDefinition mvcApiModel = MVC_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
+//        api.setModel(mvcApiModel);
+//        api.setName(mvcApiModel.getUri());
+//        api.setType("data");
+//        apiAppData.addAPI(api);
+//      } else if (restModel != null) {
+//        String expr = misuml.get("api", i, "restModel");
+//        // rest api model
+//        RestApiModelDefinition RESTAPIModel = REST_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
+//        api.setModel(RESTAPIModel);
+//        api.setType("rest");
+//        api.setName(RESTAPIModel.getAction() + "#" + RESTAPIModel.getUri());
+//        apiAppRest.addAPI(api);
+//      } else if (sqlModel != null) {
+//        String expr = misuml.get("api", i, "sqlModel");
+//        SQLAPIModelDefinition SQLAPIModel = SQL_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
+//        api.setModel(SQLAPIModel);
+//        api.setName(SQLAPIModel.getId());
+//        api.setType("sql");
+//        apiAppSql.addAPI(api);
+//      } else if (serviceModel != null) {
+//        String expr = misuml.get("api", i, "serviceModel");
+//        FunctionAPIModelDefinition serviceApiModel = FUNC_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
+//        api.setModel(serviceApiModel);
+//        api.setName(serviceApiModel.getId());
+//        api.setType("service");
+//        apiAppService.addAPI(api);
+//      } else if (domainModel != null) {
+//        String expr = misuml.get("api", i, "domainModel");
+//        // TODO: TO IMPLEMENT DOMAIN MODEL PARSER
+////                SQLAPIModelDefinition SQLAPIModel = SQL_API_MODEL_EXPRESSION_PARSER.parse(expr, model);
+////                api.setModel(SQLAPIModel);
+////                api.setName(SQLAPIModel.getId());
+//        api.setType("domain");
+//        apiAppSql.addAPI(api);
+//      }
     }
 
     retVal.addAPI(apiAppSql);
@@ -189,9 +189,8 @@ public interface Plugin {
     // graphic user interface (guic)
     for (int i = 0; i < usecaseCount; i++) {
       String module = misuml.get("usecases", i, "module");
-      UsecaseDefinition usecase = new UsecaseDefinition();
+      UsecaseDefinition usecase = new UsecaseDefinition(misuml.get("usecases", i, "name"));
       usecase.setModule(module);
-      usecase.setName(misuml.get("usecases", i, "name"));
       String expr = misuml.get("usecases", i, "view");
       GuidbaseContext guidbase = GuidbaseContext.from(new ByteArrayInputStream(expr.getBytes(StandardCharsets.UTF_8)));
       GuidbaseContainer page = guidbase.page();
@@ -207,7 +206,7 @@ public interface Plugin {
       for (GuidbaseWidget widget : page.children()) {
         pagedef.addWidget(convertToWidget(widget, pagedef));
       }
-      usecase.setPage(pagedef);
+//      usecase.setPage(pagedef);
       retVal.addUsecase(usecase);
     }
     return retVal;
