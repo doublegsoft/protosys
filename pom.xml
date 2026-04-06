@@ -104,7 +104,6 @@
         <artifactId>jcommons-metaui</artifactId>
         <version>5.0</version>
       </dependency>
-
       <dependency>
         <groupId>com.doublegsoft.misuml</groupId>
         <artifactId>misuml</artifactId>
@@ -115,11 +114,10 @@
         <artifactId>guimlc</artifactId>
         <version>4.0</version>
       </dependency>
-
       <dependency>
         <groupId>io.doublegsoft.modelbase</groupId>
         <artifactId>modelbase</artifactId>
-        <version>6.0</version>
+        <version>7.0</version>
       </dependency>
       <dependency>
         <groupId>io.doublegsoft.guidbase</groupId>
@@ -149,7 +147,6 @@
         <artifactId>appbase-common</artifactId>
         <version>5.0</version>
       </dependency>
-
       <!-- lexer and parser -->
       <dependency>
         <groupId>org.antlr</groupId>
@@ -212,23 +209,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <distributionManagement>
-    <repository>
-      <id>doublegsoft.com-releases</id>
-      <url>http://nexus.doublegsoft.com:8081/repository/maven-releases/</url>
-    </repository>
-  </distributionManagement>
-
-  <repositories>
-    <repository>
-      <id>doublegsoft.com-releases</id>
-      <url>http://nexus.doublegsoft.com:8081/repository/maven-releases/</url>
-    </repository>
-    <repository>
-      <id>doublegsoft.com-snapshots</id>
-      <url>http://nexus.doublegsoft.com:8081/repository/maven-snapshots/</url>
-    </repository>
-  </repositories>
-
 </project>
