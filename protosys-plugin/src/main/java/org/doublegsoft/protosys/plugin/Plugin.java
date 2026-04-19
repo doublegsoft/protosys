@@ -17,15 +17,22 @@ package org.doublegsoft.protosys.plugin;
 
 import com.doublegsoft.jcommons.lang.HashObject;
 import com.doublegsoft.jcommons.metabean.ModelDefinition;
+import com.doublegsoft.jcommons.metamodel.ApiDefinition;
+import com.doublegsoft.jcommons.metamodel.ApplicationApiDefinition;
+import com.doublegsoft.jcommons.metamodel.ApplicationDefinition;
+import com.doublegsoft.jcommons.metamodel.UsecaseDefinition;
 import com.doublegsoft.jcommons.metaui.PageDefinition;
 import com.doublegsoft.jcommons.metaui.WidgetDefinition;
 import com.doublegsoft.jcommons.metaui.layout.Position;
 import com.doublegsoft.jcommons.utils.Strings;
 import io.doublegsoft.guidbase.GuidbaseAttr;
 import io.doublegsoft.guidbase.GuidbaseContainer;
+import io.doublegsoft.guidbase.GuidbaseContext;
 import io.doublegsoft.guidbase.GuidbaseWidget;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * The plugin interface need to be implemented by any other detailed plugins.
@@ -45,6 +52,52 @@ public interface Plugin {
    * @throws IOException in case of any errors
    */
   void prototype(ModelDefinition model, String outputRoot, String templateRoot, HashObject globals) throws IOException;
+
+  /**
+   * Converts the misuml (especially meta gui) and the model definition (metadata) to the application definition
+   * applied for protosys code generation system.
+   * <p>
+   * The sws plugin uses misuml context (frontend and backend) and model definition (data model), so need the
+   * conversion way.
+   *
+   * @param model  the model definition (data model)
+   * @return the application definition
+   * @throws IOException in case of any IO errors
+   */
+  default ApplicationDefinition convertToApplication(ModelDefinition model) throws IOException {
+    ApplicationDefinition retVal = new ApplicationDefinition();
+    retVal.setModel(model);
+
+    // sql, data, view, rest
+    ApplicationApiDefinition apiAppSql = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppData = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppView = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppRest = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppService = new ApplicationApiDefinition();
+    ApplicationApiDefinition apiAppDomain = new ApplicationApiDefinition();
+
+    apiAppSql.setName(retVal.getName());
+    apiAppSql.setOption("type", "sql");
+    apiAppData.setName(retVal.getName());
+    apiAppData.setOption("type", "data");
+    apiAppView.setName(retVal.getName());
+    apiAppView.setOption("type", "view");
+    apiAppRest.setName(retVal.getName());
+    apiAppRest.setOption("type", "rest");
+    apiAppService.setName(retVal.getName());
+    apiAppService.setOption("type", "service");
+    apiAppDomain.setName(retVal.getName());
+    apiAppDomain.setOption("type", "domain");
+
+    retVal.addAPI(apiAppSql);
+    retVal.addAPI(apiAppData);
+    retVal.addAPI(apiAppView);
+    retVal.addAPI(apiAppRest);
+    retVal.addAPI(apiAppService);
+    retVal.addAPI(apiAppDomain);
+
+    return retVal;
+  }
 
   default WidgetDefinition convertToWidget(GuidbaseWidget widget, PageDefinition page) {
     WidgetDefinition retVal = new WidgetDefinition();
