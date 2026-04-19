@@ -16,24 +16,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.doublegsoft.misuml</groupId>
-      <artifactId>misuml</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.doublegsoft.apiml</groupId>
-      <artifactId>apiml</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.doublegsoft.jcommons</groupId>
       <artifactId>jcommons-metaui</artifactId>
     </dependency>
     <dependency>
       <groupId>io.doublegsoft.guidbase</groupId>
       <artifactId>guidbase</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.doublegsoft.guic</groupId>
-      <artifactId>guimlc</artifactId>
     </dependency>
     <dependency>
       <groupId>com.doublegsoft.jcommons</groupId>
