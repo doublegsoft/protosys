@@ -34,7 +34,7 @@ import java.util.Map;
  */
 public class Io {
 
-  private final static Configuration FREEMARKER = new Configuration(Configuration.getVersion());
+  private final static Configuration FREEMARKER = new Configuration(Configuration.VERSION_2_3_34);
 
   private final static VelocityEngine VELOCITY = new VelocityEngine();
 
